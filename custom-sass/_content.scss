@@ -1,0 +1,647 @@
+#intro {
+	background-color: $white;
+	.logo {
+		text-align: center;
+		position: relative;
+		background-color: $white;
+
+		span.sixth-sense {
+			display: block;
+			position: absolute;
+			background: url('../images/6th.png') no-repeat 0 0;
+			width: 297px;
+			height: 297px;
+			top: -130px;
+    		left: 0;
+
+    		@include breakpoints(641px, 700px) {
+    			top: -145px;
+    			left: -70px;
+    		}
+
+    		@include breakpoint(640px) {
+    			background: url('../images/6th-640.png') no-repeat 0 0;
+    			width: 172px;
+    			height: 179px;
+    			top: -66px;
+    		}
+
+    		@include breakpoints(480px, 540px) {
+			    top: -66px;
+    			left: -45px;
+    		}
+		}
+
+		.logo-block {
+			padding-top: 39px;
+
+			@include responsive(xxs) {
+				padding-top: 80px;
+			}
+		}
+	}
+
+	.smart-sense {
+		margin-top: 15px;
+
+		@include responsive(xs) {
+			margin-top: 20px;
+		}
+
+		h1 {
+			text-transform: uppercase;
+			text-align: center;
+			font-size: 50px;
+			line-height: 50px;
+			@include font($myriadL);
+			letter-spacing: 8px;
+			color: $noir;
+			margin-top: 0;
+
+			@include responsive(xxs) {
+				font-size: 35px;
+				line-height: 35px;
+			}
+		}
+
+		h4 {
+			text-align: center;
+			font-size: 22px;
+			line-height: 22px;
+			margin-bottom: 60px;
+			@include font($myriadL);
+			color: $noir;
+
+			@include responsive(xs) {
+				font-size: 28px;
+				line-height: 28px;
+				margin-bottom: 33px;
+				padding: 0 60px;
+			}
+
+			@include breakpoints(480px, 540px) {
+			    padding: 0;
+    		}
+
+			@include responsive(xxs) {
+				font-size: 22px;
+				line-height: 22px;
+				padding: 0;
+			}
+		}
+
+		.carousel.smrts-slider {
+			height: 265px;
+			max-width: 450px;
+			margin-top: 6px;
+			-webkit-perspective: 1000px;
+    		perspective: 1000px;
+
+    		@include responsive(xs) {
+    			max-width: 100%;
+    			-webkit-perspective: 900px;
+    			perspective: 900px;
+    		}
+
+    		.indicators {
+			    background-color: rgba($white, 0.9);
+			    width: 58px;
+			    height: 25px;
+			    margin: 0 auto;
+			    bottom: 30px;
+			    left: 0;
+			    right: 0;
+			    @include border-radius(20px);
+
+			    .indicator-item {
+			    	background-color: #181818;
+			    	margin: -2px 4px;
+			    	&.active {
+			    		background-color: $yellow;
+			    	}
+			    }
+    		}
+
+    		.carousel-item {
+    			width: 225px;
+    			height: 100%;
+    			max-height: 100%;
+    			top: -9px;
+    			@include box-shadow(0 5px 9px -2px rgba(#777, 0.6));
+
+				&.active {
+					&:before, &:after {
+						content:"";
+					    position: absolute; 
+					    z-index: -1;
+					    @include box-shadow(0 25px 20px rgba($black, 0.2));
+					    top: 10px;
+					    bottom: 10px;
+					    left: 0;
+					    right: 0;
+					    height: 80%;			    
+					}
+
+					&:after {
+						right: 10px; 
+					    left: auto;
+					}
+
+					img {
+						filter: initial;
+					}
+				}
+
+    			img {
+    				height: 100%;
+    				max-width: 100%;
+    				@include filter(blur, 5px);
+    			}
+    		}
+		}
+
+		.carousel-control {
+			opacity: 1;
+			span.arrow {
+				width: 60px;
+				height: 60px;
+			    position: absolute;
+    			top: 40%;
+			}
+			&.left {
+				background-image: none;
+				span.arrow {
+					background: url('../images/ssicons/leftarrow.png') no-repeat 0 0;
+					left: 0;
+
+					@include responsive(xs) {
+						left: 45%;
+					}
+
+					@include breakpoint(640px) {
+						left: 0;
+					}
+				}
+			}
+			&.right {
+				background-image: none;
+				span.arrow {
+					background: url('../images/ssicons/rightarrow.png') no-repeat 0 0;
+					right: 10%;
+
+					@include responsive(xs) {
+						right: 45%;
+					}
+
+					@include breakpoint(640px) {
+						right: 0;
+					}
+				}
+			}
+		}
+
+		// video
+		.vid-wrap {
+			position: relative;
+			width: 100%;
+
+			@include responsive(xs) {
+				margin-top: 55px;
+			}
+
+			@include responsive(xxs) {
+				margin-top: 40px;
+			}
+
+			#ss-vid {
+				width: 100%;
+				height: auto;
+				background-color: $black;
+				@include responsive(xs) {
+					//width: 100%;
+					//height: auto;
+				}
+			}
+
+			.controls {
+			    .cntrls-text {
+			    	position: absolute;
+			    	left: 50%;
+			    	top: 50%;
+			    	transform: translate(-50%, -50%);
+			    	text-align: center;
+
+			    	h4 {
+				    	color: $white;
+				    	@include font($myriadL);
+				    	font-size: 30px;
+						line-height: 35px;
+						letter-spacing: 8px;
+						margin: 0;
+						text-transform: uppercase;
+
+						@include responsive(tablet) {
+							font-size: 24px;
+							line-height: 24px;
+						}
+
+						@include responsive(xs) {
+							font-size: 40px;
+							line-height: 45px;
+						}
+
+						@include responsive(xxs) {
+							font-size: 20px;
+							line-height: 25px;
+						}
+
+						&.smrs {
+							@include font($myriadSb);
+							margin-bottom: 20px;
+						}
+				    }
+
+					a {
+						width: 86px;
+						height: 86px;
+					    border: none;
+					    display: inline-block;
+					    @include responsive(xxs) {
+					    	width: 50px;
+					    	height: 50px;
+					    }
+
+						&.btnPlay {
+							background: url('../images/ssicons/play.png') no-repeat 0 0;
+							@include responsive(xxs) {
+								background: url('../images/ssicons/play320.png') no-repeat 0 0;
+							}
+						}
+					}
+			    }
+			}
+		}
+
+		.displayinter {
+			margin-top: 110px;
+			padding-bottom: 82px;
+			margin-bottom: 0;
+
+			@include responsive(xs) {
+				margin-top: 80px;
+				padding-bottom: 72px;
+			}
+
+			@include responsive(xxs) {
+				margin-top: 40px;
+				padding-bottom: 40px;
+			}
+
+			.pic {
+				padding-left: 50px;
+
+				@include responsive(tablet) {
+					padding-left: 10px;
+				}
+
+				@include responsive(xs) {
+					padding-left: 15px;
+				}
+
+				img {
+					@include responsive(xs) {
+						width: 100%;
+					}
+				}
+			}
+
+			.desc {
+				display: table;
+				min-height: 266px;
+
+				@include responsive(xs) {
+				    margin-top: 15px;
+				}
+
+				.desc-bloc {
+					display: table-cell;
+					vertical-align: middle;
+					padding-right: 15px;
+
+					@include responsive(tablet) {
+						padding-right: 0;
+					}
+
+					h2 {
+						@include font($myriadL);
+						font-size: 30px;
+						line-height: 30px;
+						color: $noir;
+						letter-spacing: 8px;
+						text-transform: uppercase;
+						margin-top: 0;
+
+						@include responsive(xs) {
+							text-align: center;
+							font-size: 40px;
+							line-height: 40px;
+						}
+
+						@include responsive(xxs) {
+							font-size: 30px;
+							line-height: 30px;
+						}
+					}
+					p {
+						@include font($myriadL);
+						font-size: 22px;
+						line-height: 30px;
+						color: $noir;
+						letter-spacing: 1px;
+
+						@include responsive(xs) {
+							text-align: center;
+							font-size: 28px;
+							line-height: 40px;
+						}
+
+						@include responsive(xxs) {
+							font-size: 22px;
+							line-height: 30px;
+						}
+					}
+				}
+
+
+			}
+		}
+	}
+}
+
+// bootstrap carousel fade effect
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+        
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0.3;
+            transition: all 1s;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+#ss-options {
+	background: url('../images/bg-metal.jpg') no-repeat 0 0;
+	padding: 0 100px 34px;
+
+	@include responsive(xs) {
+		padding-left: 40px;
+		padding-right: 40px;
+		margin: 0 -40px;
+	}
+
+	.button-block {
+		margin-top: 20px;
+		text-align: center;
+		@include responsive(xs) {
+			margin-top: 40px;
+		}
+	}
+	
+	.carousel {
+		height: auto;
+	}
+
+	.menu {
+		max-width: 714px;
+		height: 70px;
+		margin: 40px auto 31px;
+
+		@include responsive(xs) {
+			max-width: 100%;
+		}
+		
+		li {
+			width: 33%;
+			height: 100%;
+			margin-right: 1px;
+    		margin-left: 0;
+    		display: table;
+
+    		@include breakpoints(320px, 380px) {
+				width: 30%;
+			}
+
+			a {
+				@include font($myriadL);
+				font-size: 14px;
+				line-height: 20px;
+				color: $noir;
+				text-transform: uppercase;
+				text-align: center;
+				height: 100%;
+				background-color: $white;
+				display: table-cell;
+				vertical-align: middle;
+
+				@include responsive(xs) {
+					font-size: 18px;
+				}
+
+				@include responsive(xxs) {
+					font-size: 12px;
+				}
+
+				.ss-menu-text {
+					position: relative;
+					&:after {
+						content: '';
+					    position: absolute;
+					    bottom: -2px;
+					    left: 0;
+					    width: 0%;
+					    height: 2px;
+					    background: #edb112;
+					    opacity: 1;
+					    transition: all .4s;
+					}
+				}
+
+				&:hover {
+					.ss-menu-text:after {
+						width: 100%;
+						opacity: 1;
+					}
+				}
+			}
+
+			&.active {
+				position:relative;
+				a {
+					@include font($myriadSb, bold);
+					color: $black;
+				}
+				&:after {
+					position: absolute;
+				    top: 100%;
+				    left: 70%;
+				    margin-left: -25%;
+				    content: '';
+				    width: 0;
+				    height: 0;
+				    border-top: solid 10px $white;
+				    border-left: solid 10px transparent;
+				    border-right: solid 10px transparent;
+				}
+			}
+		}
+	}
+}
+
+
+#ss-option-details {
+	padding-top: 55px;
+	padding-bottom: 39px;
+	background-color: $white;
+
+	@include responsive(xxs) {
+		padding-top: 40px;
+	}
+
+	.ss-opt-dets {
+		text-align: center;
+		@include responsive(xs) {
+			margin-bottom: 52px;
+		}
+		&:last-child {
+			@include responsive(xs) {
+				margin-bottom: 0;
+			}
+		}
+		span {
+			display: block;
+			margin: 0 auto;
+
+			&.smartsense-icon {
+				background: url('../images/ssicons/smartsense.png') no-repeat 0 0;
+				width: 124px;
+				height: 83px;
+				margin-bottom: 44px;
+				margin-top: 17px;
+			}
+
+			&.displayinter-icon {
+				background: url('../images/ssicons/displayInter.png') no-repeat 0 0;
+				width: 106px;
+				height: 116px;
+				margin-bottom: 28px;
+			}
+
+			&.flexifull-icon {
+				background: url('../images/ssicons/flexifull.png') no-repeat 0 0;
+				width: 112px;
+				height: 103px;
+				margin-bottom: 35px;
+				margin-top: 8px;
+			}
+		}
+
+		h4 {
+			@include font($myriadSb);
+			font-size: 20px;
+			line-height: 20px;
+			color: $noir;
+			text-transform: uppercase;
+			margin-bottom: 5px;
+
+			@include responsive(xs) {
+				font-size: 30px;
+				line-height: 30px;
+			}
+
+			@include responsive(xxs) {
+				font-size: 20px;
+				line-height: 20px;
+			}
+		}
+
+		p{
+			@include font($myriadL);
+			font-size: 16px;
+			line-height: 24px;
+			color: $noir;
+			padding: 0 25px;
+
+			@include responsive(tablet) {
+				padding: 0 2px;
+			}
+
+			@include responsive(xs) {
+				font-size: 24px;
+				line-height: 36px;
+			}
+
+			@include responsive(xxs) {
+				font-size: 16px;
+				line-height: 24px;
+			}
+		}
+	}
+}
+
+footer {
+	.footer-bg {
+		background: url('../images/footer-bg.jpg') no-repeat 0 0;
+		width: 100%;
+		height: 458px;
+		@include display-flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+
+	.container {
+		padding: 0;
+	}
+}
+
+
+#flexifull, #chef-control, #manuel {
+	.bx-controls {
+		display: none;
+	}
+
+	.bx-wrapper {
+		background-color: transparent;
+		border-color: transparent;
+		box-shadow: none;
+		margin-bottom: 0;
+	}
+}
+
+a {
+	&:hover, &:focus {
+		outline: none;
+	}
+}

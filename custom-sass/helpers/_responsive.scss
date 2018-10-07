@@ -1,0 +1,156 @@
+$xxs      :  320px;
+$xs       :  480px;
+$sm       :  768px;
+$tablet   :  992px;
+$md       : 1025px;
+$desktop  : 1200px;
+$lg       : 1320px;
+$large    : 1440px;
+
+
+$gutter-md: 36px;
+$gutter-sm: 36px;
+$gutter-xs: 18px;
+
+
+// RESPONSIVE LAYOUT : BREAKPOINTS
+// --------------------------------------------------
+
+@mixin responsive($media) {
+    //mobile
+    @if $media == xxs {
+        @media only screen and (max-width: $xs - 1) { @content; }
+    }
+    @if $media == xs {
+        @media only screen and (max-width: $sm - 1) { @content; }
+    }
+    @if $media == tablet {
+        @media only screen and (max-width: $tablet - 1) { @content; }
+    }
+    @else if $media == sm {
+        @media only screen and (max-width: $desktop - 1) { @content; }
+    }
+    //small screens
+    @else if $media == md {
+        @media only screen and (max-width: $lg - 1) { @content; }
+    }
+    //base container
+    @else if $media == lg {
+        @media only screen and (min-width: $lg + 1) { @content; }
+    }
+    @else if $media == large {
+        @media only screen and (min-width: $large + 1) { @content; }
+    }
+}
+
+@mixin breakpoint($breakpoint) {
+    @media only screen and (max-width: $breakpoint) {
+        @content;
+    }
+}
+
+@mixin breakpoints($breakpoint-min, $breakpoint-max) {
+    @media only screen and (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+        @content;
+    }
+}
+
+
+// CREATE BOOTSTRAP CONTAINER
+// --------------------------------------------------
+
+@mixin make-container-fluid($gutter: $grid-gutter-width) {
+    @include container-fixed($gutter);
+    @include responsive(md) {
+        padding-left: $gutter-md / 2;
+        padding-right: $gutter-md / 2;
+    }
+    /*@include responsive(sm) {
+        padding-left: $gutter-sm / 2;
+        padding-right: $gutter-sm / 2;
+    }*/
+    /*@include responsive(xs) {
+        padding-left: $gutter-xs / 2;
+        padding-right: $gutter-xs / 2;
+    }*/
+}
+
+@mixin make-container($gutter: $grid-gutter-width) {
+    @include container-fixed($gutter);
+    @media (min-width: $screen-sm-min) {
+        width: $container-sm;
+    }
+    @media (min-width: $screen-md-min) {
+        width: $container-md;
+    }
+    @media (min-width: $screen-lg-min) {
+        width: $container-lg;
+    }
+    /*@include responsive(md) {
+        padding-left: $gutter-md / 2;
+        padding-right: $gutter-md / 2;
+    }*/
+    /*@include responsive(sm) {
+        padding-left: $gutter-sm / 2;
+        padding-right: $gutter-sm / 2;
+    }*/
+    /*@include responsive(xs) {
+        padding-left: $gutter-xs / 2;
+        padding-right: $gutter-xs / 2;
+    }*/
+}
+
+// ADJUST CONTAINER CLASS ON RESPONSIVE
+// --------------------------------------------------
+
+// .container {
+//     @include responsive(md) {
+//         padding-left: $gutter-md / 2;
+//         padding-right: $gutter-md / 2;
+//     }
+//     @include responsive(sm) {
+//         padding-left: $gutter-sm / 2;
+//         padding-right: $gutter-sm / 2;
+//     }
+//     @include responsive(xs) {
+//         padding-left: $gutter-xs / 2;
+//         padding-right: $gutter-xs / 2;
+//     }
+// }
+
+
+// ADJUST ROW ON RESPONSIVE
+// --------------------------------------------------
+
+@mixin make-row-responsive ($gutter: $grid-gutter-width) {
+    @include make-row($gutter);
+    @include responsive(md) {
+        margin-left: $gutter-md / -2;
+        margin-right: $gutter-md / -2;
+    }
+    @include responsive(sm) {
+        margin-left: $gutter-sm / -2;
+        margin-right: $gutter-sm / -2;
+    }
+    @include responsive(xs) {
+        margin-left: $gutter-xs / -2;
+        margin-right: $gutter-xs / -2;
+    }
+}
+
+// ADJUST COLUMNS ON RESPONSIVE
+// --------------------------------------------------
+// Generate the extra small columns
+@mixin make-xs-column-responsive($columns, $gutter: $gutter-xs) {
+  @include make-xs-column($columns, $gutter);
+}
+
+// Generate the small columns
+@mixin make-sm-column-responsive($columns, $gutter: $gutter-sm) {
+  @include make-sm-column($columns, $gutter);
+}
+
+// Generate the medium columns
+@mixin make-md-column-responsive($columns, $gutter: $gutter-md) {
+  @include make-md-column($columns, $gutter);
+}

@@ -1,0 +1,298 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: arial;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+	max-width: 1000px;
+	@include responsive(xs) {
+		padding: 0 40px;
+		width: 100%;
+	}
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/OpenSans.eot?#iefix') format('embedded-opentype'),
+  	   url('../fonts/OpenSans.woff') format('woff'),
+  	   url('../fonts/OpenSans.ttf')  format('truetype'),
+  	   url('../fonts/OpenSans.svg#OpenSans') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyriadPro-Light';
+  src: url('../fonts/MyriadPro-Light.eot?#iefix') format('embedded-opentype'),
+	   url('../fonts/MyriadPro-Light.otf')  format('opentype'),
+	   url('../fonts/MyriadPro-Light.woff') format('woff'),
+	   url('../fonts/MyriadPro-Light.ttf')  format('truetype'),
+	   url('../fonts/MyriadPro-Light.svg#MyriadPro-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MyriadPro-Semibold';
+  src: url('../fonts/MyriadPro-Semibold.eot?#iefix') format('embedded-opentype'),
+  	   url('../fonts/MyriadPro-Semibold.otf')  format('opentype'),
+	   url('../fonts/MyriadPro-Semibold.woff') format('woff'),
+	   url('../fonts/MyriadPro-Semibold.ttf')  format('truetype'),
+	   url('../fonts/MyriadPro-Semibold.svg#MyriadPro-Semibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.dotted{
+	display: flex;
+}
+.container-inner{
+	border-right: 1px dotted rgba(255,255,255,0.5);
+	border-left: 1px dotted rgba(255,255,255,0.5);
+	width: 100%;
+}
+
+.home-slider{
+	position: relative;
+}
+.scroll-content{
+	// overflow-y: auto;
+	// min-height: 100%;
+}
+.bxslider {
+    display: block;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    list-style-type: none;
+    li{
+    	display: block;
+	    height: 100%;
+	    width: 100%;
+	    position: fixed;
+    }
+}
+.home section{
+	min-height: 100vh;
+}
+.content-slider{
+	// position: absolute;
+	// width: 100%;
+	// height: 100%;
+	// left: 0;
+	// top: 0;
+	position: relative;
+	z-index: 2;
+	display: flex;
+}
+.make-row{
+	@include make-row(0);
+	display: flex;
+	height: 100%;
+}
+.left-col,.right-col{
+	padding-top: 67px;
+}
+.left-col{
+	@include make-md-column(3,0);
+	border-right: 1px dotted rgba(255,255,255,0.5);
+}
+.right-col{
+	@include make-md-column(9,0);
+}
+.bloc-titre{
+	padding: 20px;
+	font-family: 'FuturaMed';
+	font-size: 35px;
+	line-height: normal;
+	text-transform: uppercase;
+	background: #164d80;
+	color: #FFF;
+	height: 175px;
+	width: 299px;
+	position: fixed;
+}
+.menu-home{
+	width: 100%;
+	max-width: 500px;
+	margin: 0;
+	margin-top: 175px;
+	padding: 0;
+	position: relative;
+	list-style: none;
+	float: right;
+	@include clearfix;
+	@include transition();
+	&.top{
+		margin-top: 0;
+		transform: translate3d(0, 0, 0);
+	}
+	&.open{
+		height: 175px;
+		max-width: 100%;
+		margin-top: 0;
+		display: flex;
+		
+		@include transition();
+		> li{
+			width: inherit;
+			float: none;
+			&.menu-1{
+				width: inherit;
+			}
+			> span{
+				height: 100%;
+			}
+			&.active{
+				> span{
+					background: url('../images/puce-link-active.png') no-repeat 18px 18px rgba(255,255,255,0.8);
+				}
+				h3{
+					color: #164d80;
+				}
+			}
+		}
+	}
+	> li{
+		float: left;
+		width: 50%;
+		
+		&.menu-1{
+			width: 100%;
+		}
+		&.menu-2 > span{
+			background-color: #164d80;
+		}
+		&.menu-3 > span{
+			background-color: #19568f;
+		}
+		&.menu-4 > span{
+			background-color: #165a99;
+		}
+		&.menu-5 > span{
+			background-color: #0d5ca6;
+		}
+		> span{
+			padding: 18px;
+			min-height: 140px;
+			background: url('../images/puce-link.png') no-repeat 18px 18px #144675;
+			display: flex;
+			text-align: left;
+			cursor: pointer;
+			@include transition();
+			// &:hover{
+			// 	@include opacity(0.9);
+			// 	@include transition();
+			// }
+		}
+		h3{
+			color: #FFF;
+			font-family: 'FuturaBook';
+			font-size: 16px;
+			text-transform: uppercase;
+			align-self: flex-end;
+			margin: 0;
+			span{
+				display: block;
+			}
+		}
+	}
+}
+.mega-menu-inner{
+	//display: none;
+	height: 0;
+    transition: height 0.15s ease-out;
+    //@include transition();
+    overflow: hidden;
+	width: 100%;
+	position: relative;
+	background: rgba(255,255,255,0.8);
+	&.open{
+		padding: 22px 18px 40px;
+		display: block;
+		//@include transition();
+		height: 600px;
+		//min-height: 600px;
+    	transition: height 0.25s ease-in;
+	}
+	> .inner{
+		@include opacity(0);
+		@include transition();
+		display: none;
+		&.visible{
+			display: block;
+			@include opacity(1);
+		}
+	}
+
+	p{
+		font-family: 'FuturaMed';
+		font-size: 16px;
+		line-height: normal;
+		color: #2c3e4a;
+	}
+	.link{
+		position: relative;
+		font-family: 'FuturaMed';
+		font-size: 16px;
+		line-height: normal;
+		color: #67899d;
+		&:after{
+			content: "\203a";
+			margin-left: 10px;
+			color: #164d80;
+
+		}
+		&:hover{
+			text-decoration: none;
+			color: #164d80;
+		}
+	}
+	.nav-menu{
+		margin: 30px 0 0 14px;
+		padding: 0;
+		list-style-type: none;
+		li{
+			margin-bottom: 15px;
+			border-bottom: 1px solid #a1a1a4;
+			float: left;
+			width: 40%;
+			margin-right: 5%;
+			a{
+				padding: 10px 0;
+				font-family: 'FuturaMed';
+				font-size: 16px;
+				line-height: normal;
+				color: #2c3e4a;
+				display: block;
+				@include transition();
+				&:before{
+					content: "\203a";
+					margin-right: 14px;
+					color: #164d80;
+					font-family: 'FuturaMed';
+					font-size: 24px;
+				}
+				&:hover{
+					text-decoration: none;
+					color: #67899d;
+					@include transition();
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+
+}

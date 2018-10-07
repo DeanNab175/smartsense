@@ -1,0 +1,62 @@
+header {
+	.container {
+			
+		@include responsive(xs) {
+			padding: 0;
+		}
+
+		.header-img {
+			height: 462px;
+			max-width: 1000px;
+			overflow: hidden;
+			background: url('../images/header-img.png') no-repeat 0 0;
+			background-size: cover;
+			position: relative;
+
+			@include breakpoint(640px) {
+				background: url('../images/header-img-640.png') no-repeat 0 0;
+				height: 374px;
+				max-width: 640px;
+			}
+
+			.button-block {
+			    display: block;
+			    position: absolute;
+			    bottom: 80px;
+			    right: 35px;
+
+			    @include responsive(xs) {
+			    	bottom: 57px;
+			    }
+			}
+		}
+	}
+
+}
+
+// bouton orange
+a.ss-btn {
+	display: inline-block;
+	background-color: $orange;
+	color: $white;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 38px;
+    height: 38px;
+    min-width: 148px;
+    text-transform: uppercase;
+    text-align: center;
+    @include font($openSansR);
+
+    @include responsive(xs) {
+    	min-width: 184px;
+    	height: 52px;
+    	line-height: 52px;
+    	font-size: 17px;
+    }
+
+    &:hover {
+    	background-color: darken( $orange, 10% );
+    	text-decoration: none;
+    }
+}

@@ -1,0 +1,384 @@
+// FONTS
+// --------------------------------------------------
+
+@mixin font($family, $weight: normal) {
+  font: {
+    family: $family;
+    weight: $weight;
+  }
+}
+
+@function rem($px, $base:$font-size-base) {
+  @return ($px / $base) * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: rem($size);
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+
+@mixin border-top() {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    height: 10px;
+    width: 100%;
+    background: url("../images/border-noir.png") repeat-x 0 0 transparent;
+    display: block;
+    z-index: 1;
+    @include responsive(xs){
+      background-size: 20px auto;
+      top: 5px;
+    }
+  }
+}
+
+//////////////////Repeated Nodes/////////////////
+@mixin nodes-title-style {
+  .block-title {
+    margin: 20px 0;
+  }
+  .node-subtitle {
+    color: $vert;
+    @include font($pop, $semibold);
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 30px 0;
+  }
+}
+@mixin nodes-content-style {
+  .node-content {
+    @include make-row;
+    .node-media, .node-details, .node-media-after,
+    .field-type-text-long, .node-block-wrapper, .node-block-bot {
+      @include make-md-column(10);
+      @include make-md-column-offset(1);
+    }
+  }
+}
+////////////////////////////////////
+
+@mixin carousel-indicators {
+  width: 100%;
+  left: 0;
+  padding: 0;
+  margin-bottom: 10px;
+  li {
+    border: 0;
+    background-color: $white;
+    width: 15px;
+    height: 15px;
+    margin: 0 8px;
+    @include opacity(0.5);
+    &.active {
+      @include opacity(1);
+    }
+    @include responsive(xs) {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+    }
+  }
+}
+
+@mixin button-style {
+  background-image: url(../images/border-btn-x.png), url(../images/border-btn-x.png);
+  background-position: left bottom, left top;
+  background-repeat: repeat-x;
+  @include responsive(xxs){
+    background-image: url(../images/border-btn-x-m.png), url(../images/border-btn-x.png);
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: url(../images/border-btn-y.png) 0 0 repeat-y transparent;
+    @include responsive(xxs){
+      width: 1px;
+      background: url(../images/border-btn-y-m.png) 0 0 repeat-y transparent;
+    }
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: url(../images/border-btn-y.png) 0 0 repeat-y transparent;
+    @include responsive(xxs){
+      width: 1px;
+      background: url(../images/border-btn-y-m.png) 0 0 repeat-y transparent;
+    }
+  }
+}
+@mixin dotted(){
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    height: 10px;
+    width: 100%;
+    background: url("../images/border-noir.png") repeat-x 0 0 transparent;
+    display: block;
+    z-index: 1;
+    visibility: visible;
+    @include responsive(xs){
+      background-size: 20px auto;
+      bottom: -5px;
+    }
+  }
+  &:before{
+    bottom: inherit;
+    top: 10px;
+    @include responsive(xs) {
+      top: 6px;
+    }
+  }
+}
+
+@mixin flexbox(){
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin justify($a: center){
+  -webkit-justify-content: $a;
+  -ms-justify-content: $a;
+  justify-content: $a;
+}
+@mixin align($a: center){
+  -webkit-box-align: $a;
+  -webkit-align-items: $a;
+  -moz-box-align: $a;
+  -ms-flex-align: $a;
+  align-items: $a;
+}
+@mixin flex(){
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1;
+}
+// TRANSFORMATIONS
+// --------------------------------------------------
+
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+  -ms-transform: $transform; // IE9 only
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+// TRIANGLES
+// --------------------------------------------------
+
+@mixin make-triangle-up ($triangleWidth, $color: $white) {
+  width: 0;
+  height: 0;
+  border-bottom: $triangleWidth/2 solid $color;
+  border-left: $triangleWidth/2 solid transparent;
+  border-right: $triangleWidth/2 solid transparent;
+}
+
+@mixin border-radius($x){
+  border-radius: $x;
+  -moz-border-radius: $x;
+  -webkit-border-radius: $x;
+}
+
+// BOX SHADOW
+// -----------------------------------------------
+
+//box-shadow 
+@mixin box-shadow($params) {
+  -webkit-box-shadow: $params;
+  -moz-box-shadow: $params;
+  box-shadow: $params;
+}
+
+// FILTER
+// ----------------------------------------------
+// grayscale      ex: filter: grayscale(100%);
+// sepia          ex: filter: sepia(100%);
+// saturate       ex: filter: saturate(0%);
+// hue-rotate     ex: filter: hue-rotate(45deg);
+// invert         ex: filter: invert(100%);
+// brightness     ex: filter: brightness(15%);
+// contrast       ex: filter: contrast(200%);
+// blur           ex: filter: blur(2px);
+
+@mixin filter($filter-type,$filter-amount) { 
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  -moz-opacity: 0.5;
+  -webkit-opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//hide-text 
+@mixin hide-text {
+  text-indent: -999em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// Platform
+// --------------------------------------------------
+
+@mixin appearance {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+
+  -webkit-border-radius: 0;
+}
+
+@mixin placeholderUp(){
+  ::-webkit-input-placeholder{ text-transform: uppercase; }
+  ::-moz-placeholder{ text-transform: uppercase; }
+  :-moz-placeholder{ text-transform: uppercase; }
+  :-ms-input-placeholder { text-transform: uppercase; }
+}
+// placeholder
+@mixin placeholder($color, $size:"") {
+  &::-webkit-input-placeholder {
+    color: $color;
+    opacity: 1;
+    @if $size != "" {
+      font-size: $size;
+    }
+  }
+  &:-moz-placeholder {
+    color: $color;
+    opacity: 1;
+    @if $size != "" {
+      font-size: $size;
+    }
+  }
+  &::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+    @if $size != "" {
+      font-size: $size;
+    }
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+    opacity: 1;
+    @if $size != "" {
+      font-size: $size;
+    }
+  }
+}
+@mixin text-shadow($x, $y, $blur, $color) {
+  -webkit-text-shadow: $x $y $blur $color;
+  -moz-text-shadow: $x $y $blur $color;
+  -ms-text-shadow: $x $y $blur $color;
+  -o-text-shadow: $x $y $blur $color;
+  text-shadow: $x $y $blur $color;
+}
+
+@mixin transition{
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+// Social Share Icons
+// --------------------------------------------------
+
+@mixin social-icons {
+  $list: facebook, youtube;
+
+  @each $item in $list {
+    &.#{$item} {
+      a {
+        &:before {
+          @include sprite(#{$item});
+        }
+      }
+    }
+  }
+}
+
+// Header Menu Pictos
+// --------------------------------------------------
+
+@mixin av-pictos {
+  $list: garantie, satisfaction, service, livraison;
+
+  @each $item in $list {
+    &.#{$item} {
+      &:before {
+        @include sprite(picto-#{$item});
+      }
+    }
+  }
+}
+
+@mixin display-flex {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex; 
+}
+
+@mixin button($color){
+    font-family: $robocon;
+    font-size: 24px;
+    font-weight: $regular;
+    line-height: 24px;
+    color: $color;
+    text-decoration: none;
+    border: 3px solid $color;
+    padding: 5px 50px;
+    display: inline-block;
+    text-transform: lowercase;
+    background: none;
+    @include transition();
+    &:hover{
+      background: $color;
+      color: #FFF;
+    }
+    @include responsive(xs){
+      padding: 5px 25px;
+      border: 2px solid $color;
+      font-size: 18px;
+      line-height: 18px;
+    }
+}
+
+@mixin spritesize($img,$width,$height){
+  background: url('../images/sprites/#{$img}.png') 0 0 no-repeat transparent;
+  @include background-size($width $height);
+}
